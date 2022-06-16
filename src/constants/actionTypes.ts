@@ -1,0 +1,3 @@
+export enum TypeKeys {
+  ADD_SHAPE_TO_WORKSPACE = "ADD_SHAPE_TO_WORKSPACE"
+}
