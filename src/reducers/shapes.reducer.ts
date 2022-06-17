@@ -19,6 +19,6 @@ export function shapesReducer(state: ShapesState, action: ShapesAction) {
         ...payload
       }
     default:
-      return state || null
+      return state || {}
   }
 }

@@ -1,8 +1,8 @@
 import { ShapeMap } from "../components/interfaces";
 import { TypeKeys } from "../constants/actionTypes";
 
-export type TestAction = { type: typeof TypeKeys.ADD_SHAPE_TO_WORKSPACE; payload: ShapeMap }
+export type AddToWorkSpaceType = { type: typeof TypeKeys.ADD_SHAPE_TO_WORKSPACE; payload: ShapeMap }
 
-export function TestAction(payload: ShapeMap): TestAction {
+export function AddToWorkSpaceAction(payload: ShapeMap): AddToWorkSpaceType {
   return { type: TypeKeys.ADD_SHAPE_TO_WORKSPACE, payload };
 }

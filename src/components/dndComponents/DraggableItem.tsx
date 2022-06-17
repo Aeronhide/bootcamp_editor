@@ -1,7 +1,8 @@
 import * as React from "react";
-import type { CSSProperties, FC, ReactNode } from 'react'
+import type { CSSProperties, FC } from 'react'
 import { useDrag } from 'react-dnd'
 import { Shape } from "../Shape";
+import { ShapesTypes as ST } from "../../constants/shapesTypes";
 
 const style: CSSProperties = {
   position: 'absolute',
@@ -10,25 +11,27 @@ const style: CSSProperties = {
 }
 
 export interface DraggableItemProps {
-  id: any
-  left: number
-  top: number
+  id?: any
+  left?: number
+  top?: number
+  shape?: string
 }
 
 export const DraggableItem: FC<DraggableItemProps> = ({
-  id,
-  left,
-  top,
+  id = Date.now().toString(),
+  left = 10,
+  top = 10,
+  shape
 }) => {
   const [, drag] = useDrag(
     () => ({
-      type: 'square',
-      item: { id, left, top },
+      type: ST.COMMON,
+      item: { id, left, top, shape },
       collect: (monitor) => ({
         isDragging: monitor.isDragging(),
       }),
     }),
-    [id, left, top],
+    [id, left, top, shape],
   )
 
   return (
@@ -37,9 +40,8 @@ export const DraggableItem: FC<DraggableItemProps> = ({
       className="box"
       ref={drag}
       style={{ ...style, left, top }}
-      data-testid={id}
     >
-      <Shape shapeType="circle" />
+      <Shape shapeType={shape} />
     </div>
   )
 }

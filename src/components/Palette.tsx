@@ -1,12 +1,19 @@
 import * as React from "react";
-import { DraggableItem } from "./dndComponents";
+import { ShapesTypes as ST } from "../constants/shapesTypes";
+import { DraggableItem } from "./dndComponents/DraggableItem";
 
 export function Palette(): JSX.Element {
   return (
     <div className="palette">
-      <DraggableItem id="figure1" left={10} top={10} />
-      <DraggableItem id="figure2" left={10} top={100} />
-      <DraggableItem id="figure3" left={10} top={190} />
+      <div className="palette_shape_wrapper">
+        <DraggableItem shape={ST.SQUARE} />
+      </div>
+      <div className="palette_shape_wrapper">
+        <DraggableItem shape={ST.TRIANGLE} />
+      </div>
+      <div className="palette_shape_wrapper">
+        <DraggableItem shape={ST.CIRCLE} />
+      </div>
     </div>
   );
 }

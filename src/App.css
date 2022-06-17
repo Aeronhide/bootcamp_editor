@@ -49,5 +49,11 @@ body {
   display: block;
   stroke: #88a1c7;
   fill: transparent;
-  stroke-width: 3px;
+  stroke-width: 1px;
+}
+
+.palette .palette_shape_wrapper {
+  display: block;
+  position: relative;
+  height: 60px;
 }

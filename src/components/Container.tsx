@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Palette, Workspace } from './'
+import { Palette } from './Palette'
+import { Workspace } from './Workspace'
 
 export const Container = (): JSX.Element => {
   return (

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-import { Container } from "./components";
+import { Container } from "./components/Container";
 import './App.css';
 
 export function App(): JSX.Element {
