@@ -42,7 +42,45 @@ body {
 }
 
 .shape {
-  padding: 0
+  padding: 0;
+  position: relative;
+}
+
+.shape .shape_options {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.shape .shape_change_z_index,
+.shape .shape_button_resize {
+  position: absolute;
+  bottom: -10px;
+  padding: 5px;
+  border-radius: 50%;
+  border: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.shape .shape_change_z_index {
+  left: -15px;
+}
+
+.shape .shape_button_resize {
+  right: -15px;
+}
+
+.shape .shape_change_z_index img {
+  width: 100%;
 }
 
 .shape svg {
