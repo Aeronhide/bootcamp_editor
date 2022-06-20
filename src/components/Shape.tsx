@@ -1,15 +1,32 @@
 import * as React from "react";
-import { useState } from "react";
 import { FC } from 'react'
+import squareUrl from "../assets/square.svg"
+import circleUrl from "../assets/circle.svg"
+import triangleUrl from "../assets/triangle.svg"
 
-interface ShapeColor {
+interface ShapeProp {
   [key: string]: string
 }
 
-export const Shape: FC<{ shapeType?: string }> = ({ shapeType }) => {
-  const shapePath = shapeType ? "assets/shapes.svg#" + shapeType : "assets/shapes.svg#square"
-  const [visibleOptions, setVisibleOptions] = useState(false)
-  const shapesColor: ShapeColor = {
+interface ShapeProps {
+  shapeType?: string,
+  scaleHandler(event: React.MouseEvent): void,
+  setVisibleOptions(visibleOptions: boolean): void,
+  visibleOptions: boolean,
+  scale: number
+  zIndexHandler(index: string): void
+}
+
+export const Shape: FC<ShapeProps> = (props) => {
+  const { shapeType, scaleHandler, setVisibleOptions, visibleOptions, scale, zIndexHandler } = props
+
+  const shapePath: ShapeProp = {
+    "square": squareUrl,
+    "circle": circleUrl,
+    "triangle": triangleUrl
+  }
+
+  const shapesColor: ShapeProp = {
     "square": "#FFFF00",
     "triangle": "#000",
     "circle": "#fff",
@@ -18,17 +35,17 @@ export const Shape: FC<{ shapeType?: string }> = ({ shapeType }) => {
   const doubleClick = () => {
     setVisibleOptions(!visibleOptions)
   }
-
   return (
-    <div className="shape" onDoubleClick={doubleClick}>
-      <div className="shape_options" style={{ display: visibleOptions ? "block" : "none" }}>
-        <button className="shape_button_resize">{'<>'}</button>
-        <button className="shape_change_z_index"><img src="http://cdn.onlinewebfonts.com/svg/img_425549.png" alt="image" /></button>
-      </div>
+    <div style={{ height: "100%" }}>
+      <div className="shape" onDoubleClick={doubleClick} style={{ transform: `scale(${scale})` }}>
+        <img className="shape_img" src={shapePath[shapeType]} alt="shape" />
+      </div >
+      <div className="s_options" style={{ display: visibleOptions ? "flex" : "none" }}>
 
-      <svg width="50" height="50" version="1.1" style={{ fill: shapesColor[shapeType] }} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-        <use xlinkHref={shapePath} />
-      </svg>
+        <button className="s_options_change_z_index" onClick={() => zIndexHandler('front')}>&#9650;</button>
+        <button className="s_options_change_z_index" onClick={() => zIndexHandler('back')}>&#9660;</button>
+        <button className="s_options_button_resize" onMouseDown={scaleHandler}>{'<>'}</button>
+      </div>
     </div>
   )
 }
