@@ -2,6 +2,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "mv build ./docs",
     "test": "mocha -r ts-node/register -r tsconfig-paths/register --require ignore-styles src/*.test.tsx",
     "eject": "react-scripts eject"
   },
