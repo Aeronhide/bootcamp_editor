@@ -2,13 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
-  entry: './index.tsx',
+  entry: './src/index.tsx',
   devtool: 'inline-source-map',
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, '/docs'),
     filename: 'bundle.js'
   },
-  devtool: 'inline-source-map',
   devServer: {
     static: './dist',
   },
@@ -43,7 +42,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './public/index.html'
     })
   ]
 }
