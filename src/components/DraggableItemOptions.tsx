@@ -42,8 +42,9 @@ export function DraggableItemOptions(props: DraggableItemOptionsProps): JSX.Elem
       </div>
       <div className="options_single">
         <label>Z-index</label>
-        <div>
+        <div style={{ display: 'flex' }}>
           <button className='btn text-small' onClick={bringFrontShape}>Bring front</button>
+          <p className="options_single_z_index">{zIndex.toFixed(0)}</p>
           <button className='btn text-small' onClick={sendBackShape}>Send back</button>
         </div>
       </div>
