@@ -7,6 +7,7 @@ export interface ShapeItem {
   height?: number
   scale?: number
   zIndex?: number
+  editing?: boolean
 }
 
 export interface ShapeMap {
@@ -18,5 +19,6 @@ export interface ShapeMap {
     height: number,
     scale: number,
     zIndex: number
+    editing: boolean
   }
 }

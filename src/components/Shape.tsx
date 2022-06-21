@@ -10,15 +10,13 @@ interface ShapeProp {
 
 interface ShapeProps {
   shapeType?: string,
-  scaleHandler(event: React.MouseEvent): void,
-  setVisibleOptions(visibleOptions: boolean): void,
-  visibleOptions: boolean,
-  scale: number
-  zIndexHandler(index: string): void
+  scale: number,
+  editing: boolean,
+  setEditing(editing: boolean): void
 }
 
 export const Shape: FC<ShapeProps> = (props) => {
-  const { shapeType, scaleHandler, setVisibleOptions, visibleOptions, scale, zIndexHandler } = props
+  const { shapeType, scale, setEditing, editing } = props
 
   const shapePath: ShapeProp = {
     "square": squareUrl,
@@ -33,19 +31,11 @@ export const Shape: FC<ShapeProps> = (props) => {
   }
 
   const doubleClick = () => {
-    setVisibleOptions(!visibleOptions)
+    setEditing(!editing)
   }
   return (
-    <div style={{ height: "100%" }}>
-      <div className="shape" onDoubleClick={doubleClick} style={{ transform: `scale(${scale})` }}>
-        <img className="shape_img" src={shapePath[shapeType]} alt="shape" />
-      </div >
-      <div className="s_options" style={{ display: visibleOptions ? "flex" : "none" }}>
-
-        <button className="s_options_change_z_index" onClick={() => zIndexHandler('front')}>&#9650;</button>
-        <button className="s_options_change_z_index" onClick={() => zIndexHandler('back')}>&#9660;</button>
-        <button className="s_options_button_resize" onMouseDown={scaleHandler}>{'<>'}</button>
-      </div>
-    </div>
+    <div className="shape" onDoubleClick={doubleClick} style={{ transform: `scale(${scale})`, border: editing ? '1px dashed #0000FF' : 'none' }}>
+      <img className="shape_img" src={shapePath[shapeType]} alt="shape" />
+    </div >
   )
 }

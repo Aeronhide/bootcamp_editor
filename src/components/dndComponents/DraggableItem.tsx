@@ -6,7 +6,7 @@ import { Shape } from "../Shape";
 import { ShapesTypes as ST } from "../../constants/shapesTypes";
 import { ShapeItem, ShapeMap } from "../interfaces";
 import { useDispatch } from "react-redux";
-import { UpdateShapeAction } from "../../actions/shape.actions";
+import { SetEditShapeAction, UpdateShapeAction } from "../../actions/shape.actions";
 
 const style: CSSProperties = {
   position: 'absolute',
@@ -22,49 +22,25 @@ export const DraggableItem: FC<ShapeItem> = ({
   width = 50,
   height = 50,
   scale = 1,
-  zIndex = 10
+  zIndex = 10,
+  editing = false
 }) => {
   const dispatch = useDispatch();
-
-  const [visibleOptions, setVisibleOptions] = useState(false)
 
   const [, drag] = useDrag(
     () => ({
       type: ST.COMMON,
-      item: { id, left, top, shape, width, height, scale },
+      item: { id, left, top, shape, width, height, scale, zIndex, editing },
       collect: (monitor) => ({
         isDragging: monitor.isDragging(),
       }),
-      canDrag: !visibleOptions,
+      canDrag: !editing,
     }),
-    [id, left, top, shape, width, height, scale, visibleOptions],
+    [id, left, top, shape, width, height, scale, zIndex, editing],
   )
 
-  const scaleHandler = () => {
-    function onMouseMove(mouseMoveEvent: MouseEvent) {
-      let initialTopPosition = top
-      if (0 < initialTopPosition - (mouseMoveEvent.clientY - 50)) {
-        dispatch(UpdateShapeAction({ id, scale: scale += 0.1, zIndex }))
-      } else {
-        dispatch(UpdateShapeAction({ id, scale: scale -= 0.1, zIndex }))
-      }
-
-    }
-    function onMouseUp() {
-      document.body.removeEventListener("mousemove", onMouseMove);
-      setVisibleOptions(false)
-    }
-
-    document.body.addEventListener("mousemove", onMouseMove);
-    document.body.addEventListener("mouseup", onMouseUp, { once: true });
-  };
-
-  const zIndexHandler = (index: string) => {
-    if (index === "front") return dispatch(UpdateShapeAction({ id, scale, zIndex: zIndex += 1 }))
-
-    if (zIndex === 0) return dispatch(UpdateShapeAction({ id, scale, zIndex: 0 }))
-
-    dispatch(UpdateShapeAction({ id, scale, zIndex: zIndex -= 1 }))
+  const editingShape = () => {
+    dispatch(SetEditShapeAction({ id, editing: !editing }))
   }
 
   return (
@@ -76,11 +52,9 @@ export const DraggableItem: FC<ShapeItem> = ({
     >
       <Shape
         shapeType={shape}
-        scaleHandler={scaleHandler}
-        setVisibleOptions={setVisibleOptions}
-        visibleOptions={visibleOptions}
         scale={scale}
-        zIndexHandler={zIndexHandler}
+        setEditing={editingShape}
+        editing={editing}
       />
     </div>
   )
