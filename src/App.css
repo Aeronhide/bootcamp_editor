@@ -1,38 +1,119 @@
-.App {
+body {
+  margin: 0;
+  padding: 0;
+  background: #f0f0f0;
+}
+
+.svg-references {
+  display: none;
+}
+
+.editor {
+  display: flex;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.workspace {
+  background: #f5f5f5;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.canvas {
+  width: 100%;
+  background: #fff;
+  border: 2px #ddd solid;
+  max-width: 1200px;
+  height: 600px;
+}
+
+.palette {
+  width: 80px;
+  background: #fff;
+  border-right: 2px #ddd solid;
+  height: 100%;
+}
+
+.shape_wrapper,
+.shape {
+  padding: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.shape .shape_img {
+  width: 100%;
+  height: 100%;
+}
+
+.palette .palette_shape_wrapper {
+  display: block;
+  position: relative;
+  height: 60px;
+}
+
+.options {
+  padding: 10px 5px;
+  border-radius: 4px;
+  border: 1px solid grey;
+  user-select: none;
+  display: flex;
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.options .options_single {
+  margin: 0 5px;
+  padding: 10px;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.options_single_z_index {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.options .options_single label {
+  border-bottom: 1px solid #000;
+  width: 100%;
+  margin-bottom: 10px;
+  display: block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn {
+  border: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 5px;
+  box-shadow: 0 0 2px 1px rgb(168, 165, 165);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.btn:hover {
+  transition: .4s;
+  box-shadow: 0 0 5px 1px rgb(140, 137, 137);
 }
 
-.App-link {
-  color: #61dafb;
+.btn:active {
+  transition: none;
+  box-shadow: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.text-small {
+  font-size: 11px;
 }
