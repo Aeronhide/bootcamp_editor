@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { DraggableItemOptions } from '../components/DraggableItemOptions';
+import { render, fireEvent } from '@testing-library/react';
+import { DraggableItemOptions } from '../components/dndComponents/DraggableItemOptions';
 import { AppDndWrapper } from './ComponentsWrapper';
 
 describe('DraggableItemOptions', () => {
@@ -14,5 +14,4 @@ describe('DraggableItemOptions', () => {
     const shrinkBtn = component.getByTitle('shrinkShape')
     fireEvent.click(shrinkBtn)
   })
-
 })

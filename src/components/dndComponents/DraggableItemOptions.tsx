@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useDispatch } from 'react-redux'
-import { UpdateShapeAction } from '../actions/shape.actions';
+import { UpdateShapeAction } from '../../actions/shape.actions';
 
 interface DraggableItemOptionsProps {
   id: string,

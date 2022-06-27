@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Palette must be equal to snapshot 1`] = `
+<div>
+  <div
+    class="palette"
+    title="palette"
+  >
+    <div
+      class="palette_shape_wrapper"
+    >
+      <div
+        class="box"
+        draggable="true"
+        style="position: absolute; background: transparent; cursor: move; left: 10px; top: 10px; width: 50px; height: 50px; z-index: 10;"
+        title="dragSource"
+      >
+        <div
+          class="shape square"
+          data-testid="shape"
+          style="transform: scale(1);"
+        >
+          <img
+            alt="shape"
+            class="shape_img"
+            src="square.svg"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="palette_shape_wrapper"
+    >
+      <div
+        class="box"
+        draggable="true"
+        style="position: absolute; background: transparent; cursor: move; left: 10px; top: 10px; width: 50px; height: 50px; z-index: 10;"
+        title="dragSource"
+      >
+        <div
+          class="shape triangle"
+          data-testid="shape"
+          style="transform: scale(1);"
+        >
+          <img
+            alt="shape"
+            class="shape_img"
+            src="triangle.svg"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="palette_shape_wrapper"
+    >
+      <div
+        class="box"
+        draggable="true"
+        style="position: absolute; background: transparent; cursor: move; left: 10px; top: 10px; width: 50px; height: 50px; z-index: 10;"
+        title="dragSource"
+      >
+        <div
+          class="shape circle"
+          data-testid="shape"
+          style="transform: scale(1);"
+        >
+          <img
+            alt="shape"
+            class="shape_img"
+            src="circle.svg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

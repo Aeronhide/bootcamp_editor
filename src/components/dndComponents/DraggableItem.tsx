@@ -48,7 +48,7 @@ export const DraggableItem: FC<ShapeItem> = ({
       className="box"
       ref={drag}
       title="dragSource"
-      style={{ ...style, left: left, top: top, width, height, zIndex }}
+      style={{ ...style, left, top, width, height, zIndex }}
     >
       <Shape
         shapeType={shape}

@@ -4,9 +4,9 @@ import { Workspace } from './Workspace'
 
 export const Container = (): JSX.Element => {
   return (
-    <React.Fragment>
+    <div data-testid="container">
       <Palette />
       <Workspace />
-    </React.Fragment>
+    </div>
   )
 }

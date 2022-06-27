@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, fireEvent, createEvent } from '@testing-library/react';
 import { App } from '../App';
 import { AppDndWrapper } from './ComponentsWrapper';
 
@@ -10,10 +10,13 @@ describe('App', () => {
     fireEvent.drop(dst);
   }
 
-  it('must handle drag', () => {
+  it('must handle drag and change canvas elements count', () => {
     const component = render(AppDndWrapper(<App />))
     const dragSource = component.getAllByTitle('dragSource')
     const dropSource = component.getByTitle('dropSource')
+    expect(dropSource.childElementCount).toBe(0)
     dragAndDrop(dragSource[0], dropSource)
+    expect(dropSource.childElementCount).toBe(1)
   })
+
 })

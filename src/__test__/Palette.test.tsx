@@ -10,4 +10,11 @@ describe('Palette', () => {
     const shapes = container.getElementsByClassName('shape');
     expect(shapes.length).toBe(3)
   })
+
+  it('must be equal to snapshot', () => {
+    const { container } = render(
+      AppDndWrapper(<Palette />)
+    );
+    expect(container).toMatchSnapshot()
+  })
 })

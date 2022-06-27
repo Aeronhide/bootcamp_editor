@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { AddToWorkSpaceAction, ResetEditShapesAction } from '../actions/shape.actions'
 import { ShapesTypes as ST } from '../constants/shapesTypes'
 import { DraggableItem } from './dndComponents/DraggableItem'
-import { DraggableItemOptions } from './DraggableItemOptions'
+import { DraggableItemOptions } from './dndComponents/DraggableItemOptions'
 import { ShapeItemRequired } from './interfaces'
 import { RootState } from '../store';
 
